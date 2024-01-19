@@ -2,7 +2,7 @@
   "name": "cropify",
   "types": "./index.d.ts",
   "description": "Crop and round image corners seamlessly.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "publishConfig": {
     "access": "public",
@@ -11,8 +11,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "crop-image",
+    "canvas-crop",
+    "cropify",
+    "unburn"
+  ],
+  "author": "FlameFace",
   "license": "MIT",
   "dependencies": {
     "@napi-rs/canvas": "^0.1.44"

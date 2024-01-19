@@ -13,7 +13,7 @@ npm install cropify
 
 ## Usage
 ```javascript
-const { cropImage } = require("./index");
+const { cropImage } = require("cropify");
 const fs = require("fs")
 
 const imagePath = 'https://raw.githubusercontent.com/unburn/.github/main/assets/unburngithub.png';
