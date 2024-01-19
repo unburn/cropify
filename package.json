@@ -1,0 +1,32 @@
+{
+  "name": "cropify",
+  "types": "./index.d.ts",
+  "description": "Crop and round image corners seamlessly.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.44"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unburn/cropify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/unburn/cropify/issues"
+  },
+  "funding": {
+    "type": "githubsponser",
+    "url": "https://github.com/sponsors/flameface"
+  }
+}
