@@ -11,6 +11,19 @@ async function cropImage({
     try {
         const image = await loadImage(imagePath);
 
+        if (!width) width = image.width;
+        if (!height) height = image.height;
+
+        const scaleWidth = width / image.width;
+        const scaleHeight = height / image.height;
+        const scaleFactor = Math.max(scaleWidth, scaleHeight);
+
+        const scaledWidth = image.width * scaleFactor;
+        const scaledHeight = image.height * scaleFactor;
+
+        x = (width - scaledWidth) / 2;
+        y = (height - scaledHeight) / 2;
+
         const canvas = createCanvas(width, height);
         const ctx = canvas.getContext('2d');
 
@@ -29,11 +42,11 @@ async function cropImage({
             ctx.clip();
         }
 
-        ctx.drawImage(image, x, y, width, height, 0, 0, width, height);
+        ctx.drawImage(image, x, y, scaledWidth, scaledHeight);
 
-        return canvas.toBuffer('image/png');
+        return canvas.toBuffer("image/png");
     } catch (error) {
-        console.error('Error cropping image:', error.message);
+        throw new Error(error.message);
     }
 }
 
