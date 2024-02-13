@@ -2,12 +2,13 @@ const { createCanvas, loadImage } = require('@napi-rs/canvas');
 
 async function cropImage({
     imagePath,
-    x = 0,
-    y = 0,
+    x,
+    y,
     width,
     height,
     borderRadius = 0,
-    circle = false
+    circle = false,
+    cropCenter = false
 }) {
     try {
         const image = await loadImage(imagePath);
@@ -20,13 +21,18 @@ async function cropImage({
         const scaleHeight = height / image.height;
         const scaleFactor = Math.max(scaleWidth, scaleHeight);
 
-        // Adjust x and y before scaling
-        x -= (width - image.width * scaleFactor) / 2;
-        y -= (height - image.height * scaleFactor) / 2;
-
         // Scaled dimensions
         const scaledWidth = image.width * scaleFactor;
         const scaledHeight = image.height * scaleFactor;
+
+        // Adjust x and y before scaling
+        if (cropCenter) {
+            x = (width - scaledWidth) / 2;
+            y = (height - scaledHeight) / 2;
+        } else {
+            x -= (width - image.width * scaleFactor) / 2;
+            y -= (height - image.height * scaleFactor) / 2;
+        }
 
         // Create canvas
         const canvas = createCanvas(width, height);
