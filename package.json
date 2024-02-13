@@ -2,7 +2,7 @@
   "name": "cropify",
   "types": "./index.d.ts",
   "description": "Crop and round image corners seamlessly.",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "main": "index.js",
   "publishConfig": {
     "access": "public",
