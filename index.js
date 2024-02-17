@@ -1,4 +1,4 @@
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('canvas');
 
 async function cropImage({
     imagePath,
