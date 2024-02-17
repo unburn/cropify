@@ -9,6 +9,4 @@ interface cropOption {
     cropCenter?: boolean
 }
 
-declare function cropImage(options: cropOption): Promise<Buffer>;
-
-export { cropImage }
+export declare function cropImage(options: cropOption): Promise<Buffer>;

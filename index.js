@@ -61,7 +61,7 @@ async function cropImage({
         // Draw image
         ctx.drawImage(image, x, y, scaledWidth, scaledHeight);
 
-        return canvas.toDataURL("image/png")
+        return canvas.toBuffer("image/png");
     } catch (e) {
         throw new Error(e.message)
     }

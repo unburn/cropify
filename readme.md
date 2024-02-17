@@ -1,23 +1,42 @@
-## About
-**Cropify** helps to crop and round image corners seamlessly.
+<img src="https://ik.imagekit.io/unburn/Cropify.svg"/>
 
-## Features
+<p align="center">Cropify helps to crop and round image corners seamlessly.</p>
+
+<p align="center">
+    <a href="https://github.com/unburn/cropify"><b>Github</b></a> •
+    <a href="https://discord.gg/66uGX7t4ww"><b>Support</b></a>
+</p>
+
+<div align="center">
+
+[![NPM Version](https://img.shields.io/npm/v/cropify?style=flat-square&color=%2300ADD3)](https://www.npmjs.com/package/cropify)
+[![NPM Downloads](https://img.shields.io/npm/dw/cropify?style=flat-square&color=%2300ADD3)](https://www.npmjs.com/package/cropify)
+[![NPM License](https://img.shields.io/npm/l/cropify?style=flat-square&color=%2300ADD3)](https://github.com/unburn/cropify/blob/main/LICENCE)
+[![GitHub Repo stars](https://img.shields.io/github/stars/unburn/cropify?style=flat-square&color=%2300ADD3)](https://github.com/unburn/cropify)
+
+</div>
+
+<div align="center">
+<a href="https://github.com/sponsors/flameface"><img src="https://ik.imagekit.io/unburn/SupportCropify.svg"/></a>
+</div>
+
+# Features
 - Crop images with precision using the Canvas API.
 - Optional support for rounding corners with a customizable border radius.
 - Designed for simplicity and performance.
 - Upscale and cover image.
 
-## Installation
+# Installation
 ```
 npm install cropify
 ```
 
-## Usage
+# Usage
 ```javascript
 const { cropImage } = require("cropify");
 const fs = require("fs")
 
-const imagePath = 'https://storage.googleapis.com/pai-images/8c27ed6e3c85463a8db958ecb596594e.jpeg';
+const imagePath = 'https://th.bing.com/th/id/OIGP.914kwCtAqWQ7Lkx5hT2B?pid=ImgGn';
 
 const cropX = 0;
 const cropY = 0;
@@ -31,14 +50,17 @@ cropImage({
     y: cropY,
     width: cropWidth,
     height: cropHeight,
-    borderRadius: borderRadius
+    borderRadius: borderRadius,
+    cropCenter: true
 }).then(x => {
     fs.writeFileSync("cropped-image.png", x);
 });
 ```
 
-## Output
-![example](./assets/example.png)
+> **Note**: The image used in this example is generated using DALL-E
 
----
-If you need help or want some features to be added, join our official [discord](https://discord.com/invite/qDysF95NWh) community.
+## Output
+![example](https://ik.imagekit.io/unburn/CropifyExample.svg)
+
+# Licence
+[MIT](https://github.com/unburn/cropify/blob/main/LICENCE)
