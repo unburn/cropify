@@ -1,19 +1,26 @@
 {
   "name": "cropify",
-  "types": "./index.d.ts",
+  "version": "1.0.9",
   "description": "Crop and round image corners seamlessly.",
-  "version": "1.0.8",
-  "main": "index.js",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org"
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
   },
   "files": [
-    "index.js",
-    "index.d.ts"
+    "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsup",
+    "deploy": "npm publish",
+    "deploy:beta": "npm publish --tag beta",
+    "test:m": "cd tests && node index.mjs",
+    "test:c": "cd tests && node index.js"
   },
   "keywords": [
     "crop-image",
@@ -22,13 +29,12 @@
     "unburn",
     "upscale"
   ],
-  "author": "FlameFace",
+  "author": "flameface",
   "license": "MIT",
-  "dependencies": {
-    "canvas": "^2.11.2"
-  },
   "devDependencies": {
-    "@types/node": "^20.11.19"
+    "@types/node": "^20.11.28",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.2"
   },
   "repository": {
     "type": "git",
@@ -36,5 +42,8 @@
   },
   "bugs": {
     "url": "https://github.com/unburn/cropify/issues"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.51"
   }
 }

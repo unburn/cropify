@@ -1,7 +1,7 @@
-const { cropImage } = require("cropify");
-const fs = require("fs")
+const { cropImage } = require("../dist/index");
+const fs = require("fs");
 
-const imagePath = 'https://th.bing.com/th/id/OIGP.914kwCtAqWQ7Lkx5hT2B?pid=ImgGn';
+const image = 'https://th.bing.com/th/id/OIGP.914kwCtAqWQ7Lkx5hT2B?pid=ImgGn';
 
 const cropX = 0;
 const cropY = 0;
@@ -10,7 +10,7 @@ const cropHeight = 720;
 const borderRadius = 80;
 
 cropImage({
-    imagePath: imagePath,
+    imagePath: image,
     x: cropX,
     y: cropY,
     width: cropWidth,
@@ -18,5 +18,6 @@ cropImage({
     borderRadius: borderRadius,
     cropCenter: true
 }).then(x => {
+    console.log("Image has been cropped.")
     fs.writeFileSync("cropped-image.png", x);
 });

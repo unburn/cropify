@@ -33,10 +33,15 @@ npm install cropify
 
 # Usage
 ```javascript
-const { cropImage } = require("cropify");
-const fs = require("fs")
+import { cropImage } from "cropify";
+import fs from "fs";
 
-const imagePath = 'https://th.bing.com/th/id/OIGP.914kwCtAqWQ7Lkx5hT2B?pid=ImgGn';
+// OR
+
+const { cropImage } = require("cropify");
+const fs = require("fs");
+
+const image = 'https://th.bing.com/th/id/OIGP.914kwCtAqWQ7Lkx5hT2B?pid=ImgGn';
 
 const cropX = 0;
 const cropY = 0;
@@ -45,7 +50,7 @@ const cropHeight = 720;
 const borderRadius = 80;
 
 cropImage({
-    imagePath: imagePath,
+    imagePath: image,
     x: cropX,
     y: cropY,
     width: cropWidth,
@@ -53,11 +58,10 @@ cropImage({
     borderRadius: borderRadius,
     cropCenter: true
 }).then(x => {
+    console.log("Image has been cropped.")
     fs.writeFileSync("cropped-image.png", x);
 });
 ```
-
-> **Note**: The image used in this example is generated using DALL-E
 
 ## Output
 ![example](https://ik.imagekit.io/unburn/CropifyExample.svg)
