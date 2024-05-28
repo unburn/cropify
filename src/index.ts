@@ -1,12 +1,12 @@
 import { createCanvas, loadImage } from "@napi-rs/canvas"
 
 interface optionType {
-    imagePath: string,
-    x?: number | any,
-    y?: number | any,
-    width?: number | any,
-    height?: number | any,
-    borderRadius?: number | any,
+    imagePath: Parameters<typeof loadImage>[0],
+    x?: number,
+    y?: number,
+    width?: number,
+    height?: number,
+    borderRadius?: number,
     circle?: boolean,
     cropCenter?: boolean
 }
@@ -17,6 +17,8 @@ const cropImage = async (option: optionType) => {
 
         if (!option.width) option.width = image.width;
         if (!option.height) option.height = image.height;
+        if (!option.x) option.x = 0
+        if (!option.y) option.y = 0
 
         const scaleWidth = option.width / image.width;
         const scaleHeight = option.height / image.height;
@@ -41,7 +43,7 @@ const cropImage = async (option: optionType) => {
             ctx.arc(option.width / 2, option.height / 2, Math.min(option.width, option.height) / 2, 0, Math.PI * 2);
             ctx.closePath();
             ctx.clip();
-        } else if (option.borderRadius > 0) {
+        } else if (option.borderRadius && option.borderRadius > 0) {
             ctx.beginPath();
             ctx.moveTo(option.borderRadius, 0);
             ctx.lineTo(option.width - option.borderRadius, 0);
@@ -55,7 +57,6 @@ const cropImage = async (option: optionType) => {
             ctx.closePath();
             ctx.clip();
         }
-
         ctx.drawImage(image, option.x, option.y, scaledWidth, scaledHeight);
 
         return canvas.toBuffer("image/png");
